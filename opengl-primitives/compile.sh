@@ -1,0 +1,1 @@
+gcc -Wall `pkg-config --cflags glfw3` -o main_point main_point.cpp `pkg-config --static --libs glfw3 freeglut`
