@@ -16,6 +16,8 @@ GLfloat r, g, b, a;
 void drawLineDemo(int width, int height);
 void drawGrid(GLfloat width, GLfloat height, GLfloat grid_width);
 void drawLineSegment(Vertex v1, Vertex v2, GLfloat width);
+void drawTriangle(Vertex v1, Vertex v2, Vertex v3);
+void drawTriangleDemo();
 
 void drawLineDemo(int width, int height){
 //draw a simple grid
@@ -55,6 +57,27 @@ glColor4f(v2.r, v2.g, v2.b, v2.a);
 glVertex3f(v2.x, v2.y, v2.z);
 glEnd();
 }
+
+
+void drawTriangle(Vertex v1, Vertex v2, Vertex v3){
+glBegin(GL_TRIANGLES);
+glColor4f(v1.r, v1.g, v1.b, v1.a);
+glVertex3f(v1.x, v1.y, v1.z);
+glColor4f(v2.r, v2.g, v2.b, v2.a);
+glVertex3f(v2.x, v2.y, v2.z);
+glColor4f(v3.r, v3.g, v3.b, v3.a);
+glVertex3f(v3.x, v3.y, v3.z);
+glEnd();
+}
+
+void drawTriangleDemo(){
+//Triangle Demo
+Vertex v1 = {0.0f, 0.8f, 0.0f, 1.0f, 0.0f, 0.0f, 0.6f};
+Vertex v2 = {-1.0f, -0.8f, 0.0f, 0.0f, 1.0f, 0.0f, 0.6f};
+Vertex v3 = {1.0f, -0.8f, 0.0f, 0.0f, 0.0f, 1.0f, 0.6f};
+drawTriangle(v1, v2, v3);
+}
+
 
 int main(void)
 {
@@ -97,6 +120,7 @@ glLoadIdentity();
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 drawLineDemo(width, height);
+drawTriangleDemo();
 
 // Swap front and back buffers.
 glfwSwapBuffers(window);
@@ -109,3 +133,6 @@ glfwDestroyWindow(window);
 glfwTerminate();
 exit(EXIT_SUCCESS);
 }
+
+
+
